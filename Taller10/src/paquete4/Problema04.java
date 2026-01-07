@@ -53,17 +53,14 @@ public class Problema04 {
             System.out.printf("%s\t%s\n", matB[f][0], matB[f][1]);
         }
 
-        // Comparación lógica
         for (int f = 0; f < matA.length; f++) {
             for (int c = 0; c < matA[f].length; c++) {
 
-                // Si B es mayor que A en algún punto, A pierde inmediatamente
                 if (matB[f][c] > matA[f][c]) {
                     mayorIgual = false;
                 }
 
-                // Si A es estrictamente mayor que B en algún punto, 
-                // se hace la segunda condición
+                
                 if (matA[f][c] > matB[f][c]) {
                     estricto = true;
                 }
