@@ -16,18 +16,64 @@ public class Problema04 {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
 
-        int[][] matrizA = new int[3][2];
-        int[][] matrizB = new int[3][2];
+        int[][] matA = new int[3][2];
+        int[][] matB = new int[3][2];
 
-        boolean bandera = true;
+        
+        boolean mayorIgual = true;
+        boolean estricto = false;
+        // Matriz A
+        System.out.println("---Matriz A---");
+        for (int f = 0; f < matA.length; f++) { // filas
+            for (int c = 0; c < matA[f].length; c++) { // columnas
 
-        String reporte = "";
-
-        for (int i = 0; i < matrizA.length; i++) {
-            for (int j = 0; j < matrizA[i].length; j++) {
-                System.out.printf("Ingrese valor A[%d][%d]: ", i, j);
-                matrizA[i][j] = entrada.nextInt();
+                System.out.printf("Ingrese los valores de A en la posicion [%s]"
+                        + "[%s]\n", f, c);
+                matA[f][c] = entrada.nextInt();
             }
+        }
+
+        // Matriz B
+        System.out.println("---Matriz B---");
+        for (int f = 0; f < matB.length; f++) { // filas
+            for (int c = 0; c < matB[f].length; c++) { // columnas
+                System.out.printf("Ingrese los valores de B en la posicion [%s] "
+                        + "[%s]\n", f, c);
+                matB[f][c] = entrada.nextInt();
+            }
+        }
+
+        System.out.println("La matriz A tiene los valores");
+        for (int f = 0; f < matA.length; f++) {
+            System.out.printf("%s\t%s\n", matA[f][0], matA[f][1]);
+        }
+
+        System.out.println("La matriz B tiene los valores");
+        for (int f = 0; f < matB.length; f++) {
+            System.out.printf("%s\t%s\n", matB[f][0], matB[f][1]);
+        }
+
+        // Comparación lógica
+        for (int f = 0; f < matA.length; f++) {
+            for (int c = 0; c < matA[f].length; c++) {
+
+                // Si B es mayor que A en algún punto, A pierde inmediatamente
+                if (matB[f][c] > matA[f][c]) {
+                    mayorIgual = false;
+                }
+
+                // Si A es estrictamente mayor que B en algún punto, 
+                // se hace la segunda condición
+                if (matA[f][c] > matB[f][c]) {
+                    estricto = true;
+                }
+            }
+        }
+        System.out.println("\n--- Resultado ---");
+        if (mayorIgual == true && estricto == true) {
+            System.out.println("La matriz A es mayor que la matriz B");
+        } else {
+            System.out.println("La matriz A no es mayor que la matriz B");
         }
     }
 }
